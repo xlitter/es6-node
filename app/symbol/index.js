@@ -1,12 +1,11 @@
 'use strict';
 
-const objIterator = require('./objIterator');
+import objeIterator from './objIterator';
 
 class Symbols {
   objIterator() {
-    objIterator.run();
+    objeIterator.run();
   }
 }
 
-
-module.exports = Symbols;
+export default Symbols;

@@ -48,9 +48,8 @@ function run() {
     for (const [k, v] of iterObj) {
       console.log(`k=${k}, v=${v}`);
     }
-
     console.log('------------');
   }
 }
 
-exports.run = run;
+export default { run };

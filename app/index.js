@@ -1,7 +1,6 @@
 'use strict';
-
-require('babel-register');
-const Symbols = require('./symbol/index');
+import 'source-map-support/register';
+import Symbols from './symbol/index';
 
 
 class App {
@@ -18,4 +17,3 @@ function init() {
 }
 
 init();
-
