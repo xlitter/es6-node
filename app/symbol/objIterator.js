@@ -8,23 +8,23 @@ function objIteratorOfGen(obj) {
     for (const k of keys) {
       yield [k, result[k]];
     }
-  }.bind(result);
+  };
   return result;
 }
 
 function objIteratorOfCustom(obj) {
   const result = obj || {};
 
-  result[Symbol.iterator] = () => {
+  result[Symbol.iterator] = function() {
     let idx = 0;
-    const keys = Object.getOwnPropertyNames(result);
+    const keys = Object.getOwnPropertyNames(this);
     const len = keys.length;
 
     return {
       next: () => {
         const k = keys[idx];
         return {
-          value: [k, result[k]],
+          value: [k, this[k]],
           done: idx++ === len
         };
       }
@@ -36,6 +36,7 @@ function objIteratorOfCustom(obj) {
 
 const funcs = [objIteratorOfGen, objIteratorOfCustom];
 
+/* eslint-disable no-console */
 function run() {
   for (const fn of funcs) {
     console.log(fn.name, '-----');
@@ -51,5 +52,6 @@ function run() {
     console.log('------------');
   }
 }
+/* eslint-enable no-console */
 
 export default { run };
