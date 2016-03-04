@@ -2,6 +2,7 @@
 import 'source-map-support/register';
 import Symbols from './symbol/index';
 import coc from './generator/index';
+import readImage from './readImage/index';
 
 class App {
 
@@ -22,14 +23,19 @@ class App {
       console.log('run2 gen 1');
       return 13;
     }());
-    coc.run3();
+  }
+  
+  read(url){
+    readImage.read(url);
   }
 }
 
 function init() {
+  const imageUrl = 'C:/Users/15030774/Pictures/000000000104507403_1_800x800(2).jpg';
   const app = new App();
   app.runSymbol();
   app.runCo();
+  app.read(imageUrl)
 }
 
 init();
